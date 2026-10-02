@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #222;
+}
+
+nav {
+    padding: 24px 10%;
+    border-bottom: 1px solid #ddd;
+}
+
+nav a {
+    margin-right: 30px;
+    text-decoration: none;
+    color: #222;
+}
+
+nav a:hover {
+    opacity: 0.6;
+}
+
+main {
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 0 30px;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+.service-card,
+.project-card {
+    padding: 30px;
+    margin: 20px 0;
+
+    border: 1px solid #ddd;
+    border-radius: 12px;
+
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.service-card:hover,
+.project-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.1);
+}
