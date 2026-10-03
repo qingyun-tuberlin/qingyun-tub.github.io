@@ -1,40 +1,921 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Projects</title>
+    <title>Projects & Experience | Qingyun Chen</title>
 
-    <link rel="stylesheet" href="/css/style.css">
+    <meta
+        name="description"
+        content="Selected AI projects and professional software engineering experience by Qingyun Chen."
+    >
+
+    <style>
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f4f3ef;
+            color: #171717;
+
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        /* =========================================================
+           PAGE
+        ========================================================= */
+
+        .page {
+            width: min(1280px, calc(100% - 80px));
+            margin: 0 auto;
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+        .nav {
+            height: 100px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+        }
+
+        .logo {
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 34px;
+
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            opacity: 0.5;
+            transition: opacity 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            opacity: 1;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            padding: 130px 0 150px;
+        }
+
+        .eyebrow {
+            margin-bottom: 30px;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+
+            color: #777;
+        }
+
+        .hero h1 {
+            max-width: 1100px;
+
+            font-size: clamp(56px, 7vw, 105px);
+            line-height: 0.98;
+
+            font-weight: 500;
+            letter-spacing: -0.055em;
+        }
+
+        .hero-description {
+            max-width: 650px;
+
+            margin-top: 55px;
+            margin-left: auto;
+
+            font-size: 19px;
+            line-height: 1.65;
+
+            color: #555;
+        }
+
+
+        /* =========================================================
+           SECTION
+        ========================================================= */
+
+        .section {
+            margin-bottom: 160px;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            padding-bottom: 30px;
+
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        .section-label {
+            font-size: 12px;
+            font-weight: 600;
+
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+
+            color: #777;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(35px, 5vw, 65px);
+            font-weight: 500;
+
+            letter-spacing: -0.045em;
+        }
+
+
+        /* =========================================================
+           PROJECTS
+        ========================================================= */
+
+        .project {
+            display: grid;
+
+            grid-template-columns:
+                80px
+                minmax(300px, 1.1fr)
+                minmax(350px, 1fr);
+
+            gap: 55px;
+
+            padding: 85px 0;
+
+            border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+        }
+
+        .number {
+            font-size: 13px;
+            letter-spacing: 0.08em;
+
+            color: #777;
+        }
+
+        .project-title {
+            max-width: 600px;
+
+            font-size: clamp(31px, 4vw, 52px);
+            line-height: 1.08;
+
+            font-weight: 500;
+            letter-spacing: -0.045em;
+        }
+
+        .meta {
+            margin-top: 20px;
+
+            font-size: 14px;
+            color: #777;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-top: 32px;
+            padding-bottom: 4px;
+
+            border-bottom: 1px solid #171717;
+
+            font-size: 14px;
+            font-weight: 500;
+
+            transition:
+                opacity 0.2s ease,
+                gap 0.2s ease;
+        }
+
+        .github-link:hover {
+            opacity: 0.55;
+            gap: 13px;
+        }
+
+        .description {
+            font-size: 16px;
+            line-height: 1.7;
+
+            color: #444;
+        }
+
+        .description p {
+            margin-bottom: 18px;
+        }
+
+
+        /* =========================================================
+           TECH TAGS
+        ========================================================= */
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-top: 30px;
+        }
+
+        .tech {
+            padding: 8px 12px;
+
+            border: 1px solid rgba(0, 0, 0, 0.18);
+            border-radius: 100px;
+
+            font-size: 12px;
+            line-height: 1;
+
+            color: #555;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease;
+        }
+
+        .tech:hover {
+            background: #171717;
+            color: white;
+        }
+
+
+        /* =========================================================
+           EXPERIENCE
+        ========================================================= */
+
+        .experience {
+            display: grid;
+
+            grid-template-columns:
+                80px
+                minmax(300px, 1.1fr)
+                minmax(350px, 1fr);
+
+            gap: 55px;
+
+            padding: 75px 0;
+
+            border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+        }
+
+        .company {
+            font-size: clamp(27px, 3vw, 40px);
+
+            line-height: 1.12;
+
+            font-weight: 500;
+            letter-spacing: -0.035em;
+        }
+
+        .role {
+            margin-top: 18px;
+
+            font-size: 15px;
+            line-height: 1.5;
+
+            color: #555;
+        }
+
+        .date {
+            margin-top: 8px;
+
+            font-size: 13px;
+
+            color: #888;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            padding: 40px 0 70px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .footer-title {
+            max-width: 700px;
+
+            font-size: clamp(38px, 5vw, 72px);
+            line-height: 1;
+
+            font-weight: 500;
+            letter-spacing: -0.05em;
+        }
+
+        .footer-info {
+            text-align: right;
+
+            font-size: 13px;
+            line-height: 1.8;
+
+            color: #777;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 900px) {
+
+            .page {
+                width: min(100% - 40px, 1280px);
+            }
+
+            .hero {
+                padding: 90px 0 110px;
+            }
+
+            .hero-description {
+                margin-left: 0;
+            }
+
+            .project,
+            .experience {
+                grid-template-columns: 50px 1fr;
+                gap: 30px;
+            }
+
+            .description {
+                grid-column: 2;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: flex-start;
+
+                gap: 50px;
+            }
+
+            .footer-info {
+                text-align: left;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .nav {
+                height: 80px;
+            }
+
+            .nav-links {
+                gap: 18px;
+            }
+
+            .hero {
+                padding: 75px 0 90px;
+            }
+
+            .hero h1 {
+                font-size: 50px;
+            }
+
+            .hero-description {
+                font-size: 17px;
+                margin-top: 40px;
+            }
+
+            .section {
+                margin-bottom: 100px;
+            }
+
+            .section-heading {
+                display: block;
+            }
+
+            .section-heading h2 {
+                margin-top: 12px;
+            }
+
+            .project,
+            .experience {
+                display: block;
+
+                padding: 60px 0;
+            }
+
+            .number {
+                margin-bottom: 25px;
+            }
+
+            .description {
+                margin-top: 40px;
+            }
+
+            .project-title {
+                font-size: 35px;
+            }
+
+            .company {
+                font-size: 30px;
+            }
+
+            footer {
+                padding-top: 0;
+            }
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-    <nav>
-        <a href="/">Home</a>
-        <a href="/about/">About Me</a>
-        <a href="/services/">Services</a>
-        <a href="/projects/">Projects</a>
+<div class="page">
+
+
+    <!-- =========================================================
+         NAVIGATION
+    ========================================================== -->
+
+    <nav class="nav">
+
+        <a href="../index.html" class="logo">
+            Qingyun Chen
+        </a>
+
+
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about/" class="active">About</a>
+            <a href="/services/">Services</a>
+            <a href="/projects/" class="active">Projects</a>
+        </nav>
     </nav>
 
-    <main>
 
-        <h1>Projects</h1>
 
-        <div class="project-card">
-            <h2>Project 1</h2>
-            <p>Project description...</p>
+    <!-- =========================================================
+         HERO
+    ========================================================== -->
+
+    <header class="hero">
+
+        <div class="eyebrow">
+            Selected Work
         </div>
 
-        <div class="project-card">
-            <h2>Project 2</h2>
-            <p>Project description...</p>
+        <h1>
+            AI research meets<br>
+            software engineering.
+        </h1>
+
+        <p class="hero-description">
+            Selected projects and professional work across Agentic AI,
+            retrieval-augmented generation, data processing and
+            full-stack software engineering.
+        </p>
+
+    </header>
+
+
+
+    <!-- =========================================================
+         PROJECT EXPERIENCE
+    ========================================================== -->
+
+    <section class="section">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                01 / Projects
+            </div>
+
+            <h2>
+                Project Experience
+            </h2>
+
         </div>
 
-    </main>
+
+
+        <!-- PROJECT 01 -->
+
+        <article class="project">
+
+            <div class="number">
+                01
+            </div>
+
+
+            <div>
+
+                <h3 class="project-title">
+                    Agentic AI for<br>
+                    Automated ML Engineering
+                </h3>
+
+                <div class="meta">
+                    TU Berlin · DEEM Lab
+                </div>
+
+                <a
+                    class="github-link"
+                    href="https://github.com/qingyun-tuberlin/Agentic_AI"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    View on GitHub
+                    <span>↗</span>
+                </a>
+
+            </div>
+
+
+            <div class="description">
+
+                <p>
+                    Extended Google MLE-STAR into an agentic AI system
+                    that autonomously generates, executes, debugs and
+                    refines ML pipelines using skrub DataOps.
+                </p>
+
+                <p>
+                    Engineered LLM prompting and agent constraints to
+                    reliably generate code against unfamiliar APIs and
+                    prevent fallback to incorrect or hallucinated
+                    implementations.
+                </p>
+
+                <p>
+                    Developed an XAI-driven self-correction loop using
+                    SHAP to detect data leakage and autonomously revise
+                    generated pipelines.
+                </p>
+
+                <div class="tech-stack">
+                    <span class="tech">Python</span>
+                    <span class="tech">Agentic AI</span>
+                    <span class="tech">LLM</span>
+                    <span class="tech">Google ADK</span>
+                    <span class="tech">Prompt Engineering</span>
+                    <span class="tech">Machine Learning</span>
+                    <span class="tech">Explainable AI</span>
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PROJECT 02 -->
+
+        <article class="project">
+
+            <div class="number">
+                02
+            </div>
+
+
+            <div>
+
+                <h3 class="project-title">
+                    Advanced RAG &<br>
+                    LLM Integration
+                </h3>
+
+                <div class="meta">
+                    TU Berlin · DAI-Lab
+                </div>
+
+                <a
+                    class="github-link"
+                    href="https://github.com/qingyun-tuberlin/RAG"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    View on GitHub
+                    <span>↗</span>
+                </a>
+
+            </div>
+
+
+            <div class="description">
+
+                <p>
+                    Developed a modular RAG pipeline for LLM-based
+                    question answering over large document collections,
+                    covering indexing, retrieval, reranking, query
+                    handling and generation.
+                </p>
+
+                <p>
+                    Implemented dense/BM25/hybrid retrieval, embeddings,
+                    cross-encoder reranking, HyDE and query decomposition,
+                    with configurable RAG pipelines.
+                </p>
+
+                <p>
+                    Systematically evaluated RAG architectures on QASPER
+                    and MultiHop-RAG using retrieval, generation-quality
+                    and LLM-as-a-judge metrics.
+                </p>
+
+                <div class="tech-stack">
+                    <span class="tech">Python</span>
+                    <span class="tech">RAG</span>
+                    <span class="tech">LLM</span>
+                    <span class="tech">Embeddings</span>
+                    <span class="tech">Hugging Face</span>
+                    <span class="tech">OpenAI API</span>
+                    <span class="tech">Streamlit</span>
+                    <span class="tech">Ragas</span>
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         PROFESSIONAL EXPERIENCE
+    ========================================================== -->
+
+    <section class="section">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                02 / Experience
+            </div>
+
+            <h2>
+                Professional Experience
+            </h2>
+
+        </div>
+
+
+
+        <!-- EXPERIENCE 01 -->
+
+        <article class="experience">
+
+            <div class="number">
+                01
+            </div>
+
+
+            <div>
+
+                <h3 class="company">
+                    Sparkassen Rating und
+                    Risikosysteme GmbH
+                </h3>
+
+                <div class="role">
+                    Working Student · Data Scientist<br>
+                    Risk Management Department
+                </div>
+
+                <div class="date">
+                    Apr 2025 — Aug 2026 · Berlin
+                </div>
+
+            </div>
+
+
+            <div class="description">
+
+                <p>
+                    Collaborated with credit, market and real-estate risk
+                    experts to analyze business requirements, translate
+                    them into technical solutions and automated workflows.
+                </p>
+
+                <p>
+                    Designed R scripts to extract, transform, and export
+                    risk-control data from SQL database into Excel and
+                    designing software architecture to merge risks.
+                </p>
+
+                <p>
+                    Designed evaluation, coding unit-test, conducted code
+                    review for real estate risk analysis, writing test
+                    documentation.
+                </p>
+
+                <div class="tech-stack">
+                    <span class="tech">R</span>
+                    <span class="tech">SQL</span>
+                    <span class="tech">Software Architecture</span>
+                    <span class="tech">Data Processing</span>
+                    <span class="tech">Testing</span>
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- EXPERIENCE 02 -->
+
+        <article class="experience">
+
+            <div class="number">
+                02
+            </div>
+
+
+            <div>
+
+                <h3 class="company">
+                    Institute of Flight Systems
+                    and Automatic Control
+                </h3>
+
+                <div class="role">
+                    HiWi · Development of Visualization Software
+                </div>
+
+                <div class="date">
+                    Jul 2024 — Mar 2025 · Darmstadt
+                </div>
+
+            </div>
+
+
+            <div class="description">
+
+                <p>
+                    Designed and developed a full-stack visualization
+                    system for real-time aircraft condition monitoring,
+                    supporting maintenance teams during flight operations.
+                </p>
+
+                <p>
+                    Designed a three-tier software architecture with
+                    Angular/TypeScript frontend, Spring Boot/Java backend
+                    and PostgreSQL database.
+                </p>
+
+                <p>
+                    Implemented real-time data processing and visualization,
+                    dashboards, user authentication and role-based access
+                    control (RBAC).
+                </p>
+
+                <p>
+                    Validated the system via functional testing, API
+                    testing and user evaluation.
+                </p>
+
+                <div class="tech-stack">
+                    <span class="tech">Java</span>
+                    <span class="tech">Spring Boot</span>
+                    <span class="tech">Angular</span>
+                    <span class="tech">TypeScript</span>
+                    <span class="tech">PostgreSQL</span>
+                    <span class="tech">REST APIs</span>
+                    <span class="tech">HTML/CSS</span>
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- EXPERIENCE 03 -->
+
+        <article class="experience">
+
+            <div class="number">
+                03
+            </div>
+
+
+            <div>
+
+                <h3 class="company">
+                    H&amp;H Datenverarbeitungs&shy;gesellschaft
+                </h3>
+
+                <div class="role">
+                    Working Student · Software Developer
+                </div>
+
+                <div class="date">
+                    Jun 2023 — Mar 2025 · Berlin
+                </div>
+
+            </div>
+
+
+            <div class="description">
+
+                <p>
+                    Maintained a bookkeeping software system using
+                    Angular, TypeScript, JavaScript and Java.
+                </p>
+
+                <p>
+                    Worked in an Agile development team, contributing
+                    to ticket refinement, version control and
+                    collaborative software development.
+                </p>
+
+                <div class="tech-stack">
+                    <span class="tech">Java</span>
+                    <span class="tech">TypeScript</span>
+                    <span class="tech">Angular</span>
+                    <span class="tech">JavaScript</span>
+                    <span class="tech">Git</span>
+                    <span class="tech">Jira</span>
+                    <span class="tech">Confluence</span>
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer>
+
+        <div class="footer-title">
+            Research.<br>
+            Engineering.<br>
+            Intelligent systems.
+        </div>
+
+        <div class="footer-info">
+            Qingyun Chen<br>
+            Berlin, Germany
+        </div>
+
+    </footer>
+
+
+</div>
 
 </body>
-
 </html>
