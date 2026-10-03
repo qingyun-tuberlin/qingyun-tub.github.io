@@ -5,30 +5,1295 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My Portfolio</title>
+    <title>Qingyun Chen | AI & Software Engineer</title>
 
+    <meta
+        name="description"
+        content="Portfolio of Qingyun Chen — AI & Software Engineer working with Agentic AI, RAG, machine learning and software engineering."
+    >
+
+    <!-- Shared stylesheet -->
     <link rel="stylesheet" href="/css/style.css">
+
+
+    <style>
+
+        /* =========================================================
+           HOME — HERO
+        ========================================================= */
+
+        .home-hero {
+            padding: 100px 0 90px;
+        }
+
+
+        .home-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-bottom: 32px;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+
+            color: var(--muted);
+        }
+
+
+        .home-eyebrow::before {
+            content: "";
+
+            width: 32px;
+            height: 1px;
+
+            background: var(--accent);
+        }
+
+
+        .home-title {
+            max-width: 1100px;
+
+            font-size: clamp(64px, 8vw, 112px);
+            line-height: 0.93;
+
+            font-weight: 500;
+            letter-spacing: -0.065em;
+        }
+
+
+        .home-title .accent {
+            color: var(--accent);
+        }
+
+
+        .home-intro {
+            display: grid;
+
+            grid-template-columns: 0.9fr 1.1fr;
+
+            gap: 80px;
+
+            margin-top: 60px;
+        }
+
+
+        .home-intro-left {
+            font-size: 14px;
+            line-height: 1.7;
+
+            color: var(--muted);
+        }
+
+
+        .home-intro-right {
+            max-width: 600px;
+
+            font-size: 19px;
+            line-height: 1.65;
+
+            color: var(--text-soft);
+        }
+
+
+
+        /* =========================================================
+           GENERAL HOME SECTIONS
+        ========================================================= */
+
+        .home-section {
+            padding: 85px 0;
+
+            border-top: 1px solid var(--border);
+        }
+
+
+        .home-section-header {
+            display: grid;
+
+            grid-template-columns: 0.8fr 1.2fr;
+
+            gap: 80px;
+
+            align-items: end;
+
+            margin-bottom: 45px;
+        }
+
+
+        .home-section-label {
+            font-size: 11px;
+            font-weight: 600;
+
+            letter-spacing: 0.17em;
+            text-transform: uppercase;
+
+            color: var(--muted);
+        }
+
+
+        .home-section-title {
+            max-width: 720px;
+
+            font-size: clamp(40px, 5vw, 64px);
+            line-height: 1;
+
+            font-weight: 500;
+            letter-spacing: -0.05em;
+        }
+
+
+
+        /* =========================================================
+           SELECTED WORK
+        ========================================================= */
+
+        .home-project-list {
+            border-top: 1px solid var(--border);
+        }
+
+
+        .home-project {
+            display: grid;
+
+            grid-template-columns:
+                70px
+                minmax(280px, 0.95fr)
+                minmax(320px, 1.05fr)
+                30px;
+
+            gap: 45px;
+
+            align-items: start;
+
+            padding: 45px 0;
+
+            border-bottom: 1px solid var(--border);
+
+            transition:
+                padding-left 0.25s ease,
+                opacity 0.25s ease;
+        }
+
+
+        .home-project:hover {
+            padding-left: 10px;
+        }
+
+
+        .home-project-number {
+            padding-top: 5px;
+
+            font-size: 12px;
+
+            color: var(--muted);
+        }
+
+
+        .home-project h3 {
+            max-width: 500px;
+
+            font-size: clamp(28px, 3vw, 40px);
+            line-height: 1.07;
+
+            font-weight: 500;
+            letter-spacing: -0.04em;
+        }
+
+
+        .home-project-meta {
+            margin-top: 14px;
+
+            font-size: 13px;
+
+            color: var(--muted);
+        }
+
+
+        .home-project-description {
+            max-width: 500px;
+
+            font-size: 15px;
+            line-height: 1.7;
+
+            color: var(--text-soft);
+        }
+
+
+        .home-project-arrow {
+            font-size: 20px;
+
+            transition: transform 0.2s ease;
+        }
+
+
+        .home-project:hover .home-project-arrow {
+            transform: translate(4px, -4px);
+        }
+
+
+
+        /* =========================================================
+           EXPERTISE
+        ========================================================= */
+
+        .capability-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+
+        .capability {
+            min-height: 235px;
+
+            padding: 30px;
+
+            border-right: 1px solid var(--border);
+        }
+
+
+        .capability:last-child {
+            border-right: none;
+        }
+
+
+        .capability-number {
+            margin-bottom: 42px;
+
+            font-size: 12px;
+
+            color: var(--muted);
+        }
+
+
+        .capability h3 {
+            margin-bottom: 17px;
+
+            font-size: 22px;
+            line-height: 1.15;
+
+            font-weight: 500;
+            letter-spacing: -0.025em;
+        }
+
+
+        .capability p {
+            max-width: 320px;
+
+            font-size: 14px;
+            line-height: 1.7;
+
+            color: var(--text-soft);
+        }
+
+
+
+        /* =========================================================
+           SERVICES
+        ========================================================= */
+
+        .service-preview-grid {
+            border-top: 1px solid var(--border);
+        }
+
+
+        .service-preview {
+            position: relative;
+
+            display: grid;
+
+            grid-template-columns:
+                70px
+                minmax(260px, 0.95fr)
+                minmax(320px, 1.05fr)
+                30px;
+
+            gap: 45px;
+
+            align-items: start;
+
+            padding: 45px 0;
+
+            border-bottom: 1px solid var(--border);
+
+            transition:
+                padding-left 0.25s ease,
+                background 0.25s ease;
+        }
+
+
+        .service-preview:hover {
+            padding-left: 10px;
+        }
+
+
+        .service-preview-number {
+            padding-top: 5px;
+
+            font-size: 12px;
+
+            color: var(--muted);
+        }
+
+
+        .service-preview-label {
+            margin-bottom: 12px;
+
+            font-size: 11px;
+            font-weight: 600;
+
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+
+            color: var(--accent);
+        }
+
+
+        .service-preview h3 {
+            font-size: clamp(27px, 3vw, 38px);
+            line-height: 1.05;
+
+            font-weight: 500;
+            letter-spacing: -0.035em;
+        }
+
+
+        .service-preview p {
+            max-width: 480px;
+
+            font-size: 15px;
+            line-height: 1.7;
+
+            color: var(--text-soft);
+        }
+
+
+        .service-preview-arrow {
+            font-size: 20px;
+
+            transition: transform 0.2s ease;
+        }
+
+
+        .service-preview:hover .service-preview-arrow {
+            transform: translate(4px, -4px);
+        }
+
+
+
+        /* =========================================================
+           SECTION LINKS
+        ========================================================= */
+
+        .section-action {
+            margin-top: 30px;
+        }
+
+
+        .text-link {
+            display: inline-flex;
+
+            gap: 10px;
+
+            align-items: center;
+
+            padding-bottom: 4px;
+
+            border-bottom: 1px solid var(--text);
+
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+
+        .text-link span {
+            transition: transform 0.2s ease;
+        }
+
+
+        .text-link:hover span {
+            transform: translateX(4px);
+        }
+
+
+
+        /* =========================================================
+           CTA
+        ========================================================= */
+
+        .home-cta {
+            padding: 100px 0 110px;
+
+            border-top: 1px solid var(--border);
+        }
+
+
+        .home-cta .home-section-label {
+            margin-bottom: 28px;
+        }
+
+
+        .home-cta h2 {
+            max-width: 900px;
+
+            font-size: clamp(46px, 7vw, 82px);
+            line-height: 0.98;
+
+            font-weight: 500;
+            letter-spacing: -0.055em;
+        }
+
+
+        .home-cta-links {
+            display: flex;
+
+            gap: 12px;
+
+            margin-top: 40px;
+        }
+
+
+
+        /* =========================================================
+           RESPONSIVE — TABLET
+        ========================================================= */
+
+        @media (max-width: 900px) {
+
+            .home-hero {
+                padding: 85px 0;
+            }
+
+
+            .home-title {
+                font-size: clamp(56px, 11vw, 86px);
+            }
+
+
+            .home-intro {
+                grid-template-columns: 1fr;
+
+                gap: 25px;
+
+                margin-top: 45px;
+            }
+
+
+            .home-section {
+                padding: 70px 0;
+            }
+
+
+            .home-section-header {
+                grid-template-columns: 1fr;
+
+                gap: 16px;
+
+                margin-bottom: 35px;
+            }
+
+
+            .home-project {
+                grid-template-columns: 50px 1fr;
+
+                gap: 25px;
+            }
+
+
+            .home-project-description {
+                grid-column: 2;
+            }
+
+
+            .home-project-arrow {
+                display: none;
+            }
+
+
+            .capability-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .capability {
+                min-height: auto;
+
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+
+            .capability:last-child {
+                border-bottom: none;
+            }
+
+
+            .capability-number {
+                margin-bottom: 25px;
+            }
+
+
+            .service-preview {
+                grid-template-columns: 50px 1fr;
+
+                gap: 25px;
+            }
+
+
+            .service-preview p {
+                grid-column: 2;
+            }
+
+
+            .service-preview-arrow {
+                display: none;
+            }
+
+        }
+
+
+
+        /* =========================================================
+           RESPONSIVE — MOBILE
+        ========================================================= */
+
+        @media (max-width: 600px) {
+
+            .home-hero {
+                padding: 65px 0 70px;
+            }
+
+
+            .home-eyebrow {
+                margin-bottom: 24px;
+            }
+
+
+            .home-title {
+                font-size: 50px;
+
+                line-height: 0.96;
+            }
+
+
+            .home-intro {
+                margin-top: 38px;
+            }
+
+
+            .home-intro-right {
+                font-size: 17px;
+            }
+
+
+            .home-section {
+                padding: 60px 0;
+            }
+
+
+            .home-section-title {
+                font-size: 40px;
+            }
+
+
+            .home-project {
+                display: block;
+
+                padding: 35px 0;
+            }
+
+
+            .home-project:hover {
+                padding-left: 0;
+            }
+
+
+            .home-project-number {
+                margin-bottom: 20px;
+            }
+
+
+            .home-project-description {
+                margin-top: 25px;
+            }
+
+
+            .capability {
+                padding: 28px 0;
+            }
+
+
+            .service-preview {
+                display: block;
+
+                padding: 35px 0;
+            }
+
+
+            .service-preview:hover {
+                padding-left: 0;
+            }
+
+
+            .service-preview-number {
+                margin-bottom: 20px;
+            }
+
+
+            .service-preview p {
+                margin-top: 25px;
+            }
+
+
+            .home-cta {
+                padding: 75px 0 85px;
+            }
+
+
+            .home-cta-links {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+        }
+
+    </style>
+
 </head>
+
+
 
 <body>
 
-    <nav>
-        <a href="/">Home</a>
-        <a href="/about/">About</a>
-        <a href="/services/">Services</a>
-        <a href="/projects/">Projects</a>
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<header class="navbar">
+
+    <a href="/" class="logo">
+        QINGYUN CHEN
+    </a>
+
+
+    <nav class="nav-links">
+
+        <a href="/" class="active">
+            Home
+        </a>
+
+        <a href="/about/">
+            About
+        </a>
+
+        <a href="/services/">
+            Services
+        </a>
+
+        <a href="/projects/">
+            Projects
+        </a>
+
     </nav>
 
-    <main>
-        <h1>Hello, I'm Qingyun Chen</h1>
-        AI / Machine Learning / Software Development
-        <p>
-            A warm welcome to my homepage. 
-            
-        </p>
-    </main>
+</header>
 
-    <script src="/js/main.js"></script>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="container">
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="home-hero">
+
+
+        <div class="home-eyebrow">
+            AI & Software Engineer · Berlin
+        </div>
+
+
+        <h1 class="home-title">
+
+            Building<br>
+
+            <span class="accent">
+                intelligent
+            </span>
+
+            systems.
+
+        </h1>
+
+
+
+        <div class="home-intro">
+
+
+            <div class="home-intro-left">
+
+                Agentic AI<br>
+                RAG & LLM Systems<br>
+                Machine Learning<br>
+                Software Engineering
+
+            </div>
+
+
+
+            <p class="home-intro-right">
+
+                I work at the intersection of artificial intelligence
+                and software engineering — building intelligent systems
+                that connect modern AI methods with reliable,
+                well-structured software.
+
+            </p>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SELECTED WORK
+    ====================================================== -->
+
+    <section class="home-section">
+
+
+        <div class="home-section-header">
+
+
+            <div class="home-section-label">
+                01 / Selected Work
+            </div>
+
+
+            <h2 class="home-section-title">
+                Research meets engineering.
+            </h2>
+
+
+        </div>
+
+
+
+        <div class="home-project-list">
+
+
+            <!-- PROJECT 01 -->
+
+            <a
+                href="https://github.com/qingyun-tuberlin/Agentic_AI"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="home-project"
+            >
+
+
+                <div class="home-project-number">
+                    01
+                </div>
+
+
+
+                <div>
+
+                    <h3>
+                        Agentic AI for<br>
+                        Automated ML Engineering
+                    </h3>
+
+                    <div class="home-project-meta">
+                        TU Berlin · DEEM Lab
+                    </div>
+
+                </div>
+
+
+
+                <div class="home-project-description">
+
+                    Extended Google MLE-STAR into an agentic AI system
+                    that autonomously generates, executes, debugs and
+                    refines machine learning pipelines.
+
+                </div>
+
+
+
+                <div class="home-project-arrow">
+                    ↗
+                </div>
+
+
+            </a>
+
+
+
+            <!-- PROJECT 02 -->
+
+            <a
+                href="https://github.com/qingyun-tuberlin/RAG"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="home-project"
+            >
+
+
+                <div class="home-project-number">
+                    02
+                </div>
+
+
+
+                <div>
+
+                    <h3>
+                        Advanced RAG &<br>
+                        LLM Integration
+                    </h3>
+
+                    <div class="home-project-meta">
+                        TU Berlin · DAI-Lab
+                    </div>
+
+                </div>
+
+
+
+                <div class="home-project-description">
+
+                    A modular RAG architecture covering retrieval,
+                    reranking, query transformation, generation and
+                    systematic evaluation.
+
+                </div>
+
+
+
+                <div class="home-project-arrow">
+                    ↗
+                </div>
+
+
+            </a>
+
+
+        </div>
+
+
+
+        <div class="section-action">
+
+            <a href="/projects/" class="text-link">
+
+                View all work
+
+                <span>
+                    →
+                </span>
+
+            </a>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         EXPERTISE
+    ====================================================== -->
+
+    <section class="home-section">
+
+
+        <div class="home-section-header">
+
+
+            <div class="home-section-label">
+                02 / Expertise
+            </div>
+
+
+            <h2 class="home-section-title">
+                What I work with.
+            </h2>
+
+
+        </div>
+
+
+
+        <div class="capability-grid">
+
+
+            <!-- AI -->
+
+            <article class="capability">
+
+                <div class="capability-number">
+                    01
+                </div>
+
+
+                <h3>
+                    AI & Intelligent Systems
+                </h3>
+
+
+                <p>
+                    Agentic AI, LLM applications, RAG,
+                    machine learning, prompt engineering
+                    and explainable AI.
+                </p>
+
+            </article>
+
+
+
+            <!-- SOFTWARE -->
+
+            <article class="capability">
+
+                <div class="capability-number">
+                    02
+                </div>
+
+
+                <h3>
+                    Software Engineering
+                </h3>
+
+
+                <p>
+                    Full-stack development, system architecture,
+                    REST APIs, databases, authentication,
+                    testing and CI/CD.
+                </p>
+
+            </article>
+
+
+
+            <!-- DATA -->
+
+            <article class="capability">
+
+                <div class="capability-number">
+                    03
+                </div>
+
+
+                <h3>
+                    Data & Automation
+                </h3>
+
+
+                <p>
+                    Data processing, ML pipelines,
+                    automated workflows, vector search
+                    and model evaluation.
+                </p>
+
+            </article>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SERVICES
+    ====================================================== -->
+
+    <section class="home-section">
+
+
+        <div class="home-section-header">
+
+
+            <div class="home-section-label">
+                03 / Services
+            </div>
+
+
+            <h2 class="home-section-title">
+                How I can help.
+            </h2>
+
+
+        </div>
+
+
+
+        <div class="service-preview-grid">
+
+
+            <!-- SERVICE 01 -->
+
+            <a
+                href="/services/"
+                class="service-preview"
+            >
+
+
+                <div class="service-preview-number">
+                    01
+                </div>
+
+
+
+                <div>
+
+                    <div class="service-preview-label">
+                        Learning Support
+                    </div>
+
+
+                    <h3>
+                        Homework<br>
+                        Helper
+                    </h3>
+
+                </div>
+
+
+
+                <p>
+
+                    Support with mathematics and programming —
+                    from understanding exercises to working through
+                    technical problems and project concepts.
+
+                </p>
+
+
+
+                <div class="service-preview-arrow">
+                    ↗
+                </div>
+
+
+            </a>
+
+
+
+            <!-- SERVICE 02 -->
+
+            <a
+                href="/services/"
+                class="service-preview"
+            >
+
+
+                <div class="service-preview-number">
+                    02
+                </div>
+
+
+
+                <div>
+
+                    <div class="service-preview-label">
+                        Study Support
+                    </div>
+
+
+                    <h3>
+                        Motivation<br>
+                        Coach
+                    </h3>
+
+                </div>
+
+
+
+                <p>
+
+                    Support with study motivation, exam preparation
+                    and creating structure when academic work becomes
+                    difficult to manage.
+
+                </p>
+
+
+
+                <div class="service-preview-arrow">
+                    ↗
+                </div>
+
+
+            </a>
+
+
+
+            <!-- SERVICE 03 -->
+
+            <a
+                href="/services/"
+                class="service-preview"
+            >
+
+
+                <div class="service-preview-number">
+                    03
+                </div>
+
+
+
+                <div>
+
+                    <div class="service-preview-label">
+                        Germany Onboarding
+                    </div>
+
+
+                    <h3>
+                        Studying in<br>
+                        Germany
+                    </h3>
+
+                </div>
+
+
+
+                <p>
+
+                    Personal support for students who are new to
+                    Germany and want someone to talk to about studying,
+                    settling in and everyday challenges.
+
+                </p>
+
+
+
+                <div class="service-preview-arrow">
+                    ↗
+                </div>
+
+
+            </a>
+
+
+        </div>
+
+
+
+        <div class="section-action">
+
+            <a
+                href="/services/"
+                class="text-link"
+            >
+
+                Explore services
+
+                <span>
+                    →
+                </span>
+
+            </a>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FINAL CTA
+    ====================================================== -->
+
+    <section class="home-cta">
+
+
+        <div class="home-section-label">
+            Explore
+        </div>
+
+
+        <h2>
+
+            Ideas are useful<br>
+            when they become systems.
+
+        </h2>
+
+
+
+        <div class="home-cta-links">
+
+
+            <a
+                href="/about/"
+                class="button"
+            >
+                About Me →
+            </a>
+
+
+            <a
+                href="/projects/"
+                class="button button-secondary"
+            >
+                View Projects →
+            </a>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+
+    <span>
+        © 2026 Qingyun Chen
+    </span>
+
+
+    <span>
+        Berlin, Germany
+    </span>
+
+
+</footer>
+
 
 </body>
 
